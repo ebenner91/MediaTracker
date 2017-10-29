@@ -3,7 +3,9 @@ package co.miniforge.corey.mediatracker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import co.miniforge.corey.mediatracker.model.MediaItem;
@@ -15,9 +17,29 @@ import co.miniforge.corey.mediatracker.model.MediaItem;
  * the code in MyListActivity)
  */
 public class MediaItemDetailActivity extends AppCompatActivity {
+
+    MediaItem item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_item_detail);
+
+        String extraData;
+        if(getIntent().hasExtra("extraTag")){
+            extraData = getIntent().getStringExtra("extraTag");
+            try {
+                JSONObject mediaJson = new JSONObject(extraData);
+                item = new MediaItem(mediaJson);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+
     }
+
 }

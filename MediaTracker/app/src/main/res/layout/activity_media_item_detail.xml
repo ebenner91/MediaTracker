@@ -4,6 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.miniforge.corey.mediatracker.MediaItemDetailActivity">
+    tools:context="co.miniforge.corey.mediatracker.MediaItemDetailActivity"
+    tools:layout_editor_absoluteY="81dp">
 
+    <EditText
+        android:id="@+id/mediaTitile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:ems="10"
+        android:hint="Titile"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/titlePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/titlePrompt" />
+
+    <EditText
+        android:id="@+id/mediaDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/descriptionPrompt"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionPrompt" />
+
+    <EditText
+        android:id="@+id/mediaURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:ems="10"
+        android:hint="URL"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titlePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="44dp"
+        android:text="Title:"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
+
+    <TextView
+        android:id="@+id/descriptionPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="108dp"
+        android:text="Description:"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/mediaURL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mediaTitile" />
+
+    <TextView
+        android:id="@+id/urlPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:layout_marginStart="1dp"
+        android:text="URL:"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/mediaURL"
+        app:layout_constraintStart_toStartOf="@+id/mediaURL" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="Edit Info"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
