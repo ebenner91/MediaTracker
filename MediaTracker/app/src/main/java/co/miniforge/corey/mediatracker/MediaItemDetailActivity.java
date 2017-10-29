@@ -36,6 +36,18 @@ public class MediaItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_item_detail);
 
+        getHolderIntent();
+        getEditTexts();
+        getButton();
+        fillEdits();
+        saveButtonListener();
+
+    }
+
+    /**
+     * Get the data received from the intent
+     */
+    void getHolderIntent() {
         String extraData;
         if(getIntent().hasExtra(mediaExtra)){
             extraData = getIntent().getStringExtra(mediaExtra);
@@ -46,30 +58,36 @@ public class MediaItemDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
-        getEditTexts();
-        getButton();
-        fillEdits();
-        saveButtonListener();
-
     }
 
+    /**
+     * Get the EditText elements from the layout
+     */
     void getEditTexts() {
         title = (EditText) findViewById(R.id.mediaTitle);
         description = (EditText) findViewById(R.id.mediaDescription);
         url = (EditText) findViewById(R.id.mediaURL);
     }
 
+    /**
+     * Get the save button from the layout
+     */
     void getButton() {
         saveButton = (Button) findViewById(R.id.saveButton);
     }
 
+    /**
+     * Set the text values of the EditTexts to the data pulled from the mediaItem
+     */
     void fillEdits() {
         title.setText(updateMediaItem.title);
         description.setText(updateMediaItem.description);
         url.setText(updateMediaItem.url);
     }
 
+    /**
+     * Set the click listener for the save button
+     */
     void saveButtonListener() {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +102,9 @@ public class MediaItemDetailActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Update the MediaItem with inputs pulled from the EditTexts
+     */
     void updateItem() {
         String editTitle = title.getText().toString();
         String editDescription = description.getText().toString();
