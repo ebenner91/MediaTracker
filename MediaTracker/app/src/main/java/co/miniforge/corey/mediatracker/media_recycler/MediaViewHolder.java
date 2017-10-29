@@ -13,6 +13,8 @@ import co.miniforge.corey.mediatracker.MyListActivity;
 import co.miniforge.corey.mediatracker.R;
 import co.miniforge.corey.mediatracker.model.MediaItem;
 
+import static co.miniforge.corey.mediatracker.MyListActivity.mediaExtra;
+
 /**
  * Created by corey on 10/15/17.
  */
@@ -46,8 +48,8 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
         inflated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MediaItemDetailActivity.class);
-                intent.putExtra("extraTag", mediaItem.toJson().toString());
+                Intent intent = new Intent(context.getApplicationContext(), MediaItemDetailActivity.class);
+                intent.putExtra(mediaExtra, mediaItem.toJson().toString());
                 context.startActivity(intent);
 
             }

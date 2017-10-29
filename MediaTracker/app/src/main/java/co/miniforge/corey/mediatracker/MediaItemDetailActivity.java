@@ -12,6 +12,8 @@ import org.json.JSONObject;
 
 import co.miniforge.corey.mediatracker.model.MediaItem;
 
+import static co.miniforge.corey.mediatracker.MyListActivity.mediaExtra;
+
 /**
  * This activity will display the contents of a media item and allow the user to update the contents
  * of the item. When the user clicks the save button, the activity should create an intent that goes
@@ -23,7 +25,7 @@ import co.miniforge.corey.mediatracker.model.MediaItem;
  */
 public class MediaItemDetailActivity extends AppCompatActivity {
 
-    MediaItem item;
+    MediaItem updateMediaItem;
     EditText title;
     EditText description;
     EditText url;
@@ -35,11 +37,11 @@ public class MediaItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_media_item_detail);
 
         String extraData;
-        if(getIntent().hasExtra("extraTag")){
-            extraData = getIntent().getStringExtra("extraTag");
+        if(getIntent().hasExtra(mediaExtra)){
+            extraData = getIntent().getStringExtra(mediaExtra);
             try {
                 JSONObject mediaJson = new JSONObject(extraData);
-                item = new MediaItem(mediaJson);
+                updateMediaItem = new MediaItem(mediaJson);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -63,29 +65,33 @@ public class MediaItemDetailActivity extends AppCompatActivity {
     }
 
     void fillEdits() {
-        title.setText(item.title);
-        description.setText(item.description);
-        url.setText(item.url);
+        title.setText(updateMediaItem.title);
+        description.setText(updateMediaItem.description);
+        url.setText(updateMediaItem.url);
     }
 
     void saveButtonListener() {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String editTitle = title.getText().toString();
-                String editDescription = description.getText().toString();
-                String editURL = url.getText().toString();
+                updateItem();
 
-                item.title = editTitle;
-                item.description = editDescription;
-                item.url = editURL;
-
-                Intent intent = new Intent(getApplicationContext(), MyListActivity.class);
-                intent.putExtra("mediaExtra", item.toJson().toString());
-                startActivity(intent);
+                Intent updateIntent = new Intent(getApplicationContext(), MyListActivity.class);
+                updateIntent.putExtra(mediaExtra, updateMediaItem.toJson().toString());
+                startActivity(updateIntent);
 
             }
         });
+    }
+
+    void updateItem() {
+        String editTitle = title.getText().toString();
+        String editDescription = description.getText().toString();
+        String editURL = url.getText().toString();
+
+        updateMediaItem.title = editTitle;
+        updateMediaItem.description = editDescription;
+        updateMediaItem.url = editURL;
     }
 
 }
