@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
-        android:id="@+id/mediaTitile"
+        android:id="@+id/mediaTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -63,7 +63,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/mediaURL"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mediaTitile" />
+        app:layout_constraintTop_toTopOf="@+id/mediaTitle" />
 
     <TextView
         android:id="@+id/urlPrompt"
