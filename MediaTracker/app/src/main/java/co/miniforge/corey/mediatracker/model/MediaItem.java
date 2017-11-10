@@ -13,12 +13,13 @@ import co.miniforge.corey.mediatracker.media_store.Md5IdHelper;
  */
 
 public class MediaItem {
-    public static int defaultId = 0;
 
     public String id;
     public String title;
     public String description;
     public String url;
+
+    public MediaItemType type = MediaItemType.Generic;
 
     public MediaItem(JSONObject jsonObject){
         try{
@@ -27,13 +28,15 @@ public class MediaItem {
             this.title = jsonObject.getString("title");
             this.description = jsonObject.getString("description");
             this.url = jsonObject.getString("url");
+
+            this.type = getTypeForString(jsonObject.getString("type"));
         } catch (Exception e){
             Log.e("toJSONError", String.format("There was an error: %s", e.getMessage()));
         }
     }
 
     public MediaItem(){
-        this.id = Md5IdHelper.idForObject(defaultId++);
+        this.id = Md5IdHelper.idForObject(this);
         this.title = "defaultTitle";
         this.description = "defaultDescription";
         this.url = "defaultUrl";
@@ -47,10 +50,34 @@ public class MediaItem {
             mediaItem.put("title", this.title);
             mediaItem.put("description", this.description);
             mediaItem.put("url", this.url);
+
+            mediaItem.put("type", getStringForType(this.type));
         } catch (Exception e){
             Log.e("toJSONError", String.format("There was an error: %s", e.getMessage()));
         }
 
         return mediaItem;
+    }
+
+    MediaItemType getTypeForString(String value){
+        switch (value){
+            case "TV":
+                return  MediaItemType.TV;
+            case "Movie":
+                return  MediaItemType.Movie;
+            default:
+                return MediaItemType.Generic;
+        }
+    }
+
+    String getStringForType (MediaItemType type){
+        switch (type) {
+            case Movie:
+                return "Movie";
+            case TV:
+                return "TV";
+            default:
+                return "Generic";
+        }
     }
 }
