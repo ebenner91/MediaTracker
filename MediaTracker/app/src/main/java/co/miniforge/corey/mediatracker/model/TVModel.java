@@ -7,6 +7,11 @@ import org.json.JSONObject;
  */
 
 public class TVModel extends MediaItem {
+
+    public int currentEpisodesWatched;
+    public int totalEpisodes;
+
+
     public TVModel(JSONObject jsonObject) {
         super(jsonObject);
     }
