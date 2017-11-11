@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.miniforge.corey.mediatracker.MediaItemDetailActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/mediaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Titile"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/titlePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/titlePrompt" />
+
+    <EditText
+        android:id="@+id/mediaDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/mediaTitle"
+        app:layout_constraintTop_toBottomOf="@+id/mediaTitle" />
+
+    <EditText
+        android:id="@+id/mediaURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:hint="URL"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/mediaDescription"
+        app:layout_constraintTop_toBottomOf="@+id/mediaDescription" />
+
+    <TextView
+        android:id="@+id/titlePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="43dp"
+        android:text="Title:"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/mediaDescription"
+        app:layout_constraintStart_toStartOf="@+id/mediaDescription" />
+
+    <TextView
+        android:id="@+id/urlPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL:"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/mediaURL"
+        app:layout_constraintStart_toStartOf="@+id/mediaURL" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Edit Info"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ratingPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/movieRating"
+        app:layout_constraintStart_toStartOf="@+id/movieRating" />
+
+    <EditText
+        android:id="@+id/movieRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Rating"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/mediaURL"
+        app:layout_constraintTop_toBottomOf="@+id/mediaURL" />
+
+    <TextView
+        android:id="@+id/movieGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Genre"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/movieRating"
+        app:layout_constraintTop_toBottomOf="@+id/movieRating" />
+
+    <EditText
+        android:id="@+id/movieGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:hint="Genre"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintStart_toStartOf="@+id/movieRating" />
+</android.support.constraint.ConstraintLayout>
