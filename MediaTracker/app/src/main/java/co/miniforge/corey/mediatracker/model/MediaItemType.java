@@ -7,5 +7,6 @@ package co.miniforge.corey.mediatracker.model;
 public enum MediaItemType {
     Generic,
     TV,
-    Movie
+    Movie,
+    YouTube
 }
