@@ -10,6 +10,7 @@ import co.miniforge.corey.mediatracker.MediaItemDetailActivity;
 import co.miniforge.corey.mediatracker.MyListActivity;
 import co.miniforge.corey.mediatracker.R;
 import co.miniforge.corey.mediatracker.model.MediaItem;
+import co.miniforge.corey.mediatracker.ui_helpers.ThemeHelper;
 
 import static co.miniforge.corey.mediatracker.MyListActivity.mediaExtra;
 
@@ -25,6 +26,10 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
 
     Context context;
 
+    ThemeHelper themeHelper;
+    View layout;
+
+
     public MediaViewHolder(View itemView) {
         super(itemView);
 
@@ -37,11 +42,16 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
 
         mediaName = itemView.findViewById(R.id.mediaName);
         mediaDescription = itemView.findViewById(R.id.mediaDescription);
+        layout = itemView.findViewById(R.id.mediaItem);
     }
 
     public void bindData(final MediaItem mediaItem){
         this.mediaName.setText(mediaItem.title);
         this.mediaDescription.setText(mediaItem.description);
+        themeHelper = new ThemeHelper(context);
+        themeHelper.themeBackground(layout);
+        TextView[] textViews = {mediaName, mediaDescription};
+        themeHelper.themeTextView(textViews);
 
         inflated.setOnClickListener(new View.OnClickListener() {
             @Override

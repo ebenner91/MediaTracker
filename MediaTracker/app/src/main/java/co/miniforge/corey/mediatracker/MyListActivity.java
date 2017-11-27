@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import java.util.List;
 import co.miniforge.corey.mediatracker.media_recycler.MediaRecyclerAdapter;
 import co.miniforge.corey.mediatracker.media_store.MediaStorageUtil;
 import co.miniforge.corey.mediatracker.model.MediaItem;
+import co.miniforge.corey.mediatracker.ui_helpers.ThemeHelper;
 
 public class MyListActivity extends AppCompatActivity {
     public static String mediaExtra = "mediaExtra";
@@ -34,6 +36,10 @@ public class MyListActivity extends AppCompatActivity {
 
     List<MediaItem> mediaItems = new LinkedList<>();
 
+    ThemeHelper themeHelper;
+
+    View layout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +49,16 @@ public class MyListActivity extends AppCompatActivity {
 
         storageUtil = new MediaStorageUtil(getApplicationContext());
 
+        themeHelper = new ThemeHelper(getApplicationContext());
+
         locateViews();
 
         bindData();
 
         handleIntent();
+
+
+
     }
 
     void handleIntent(){
@@ -77,9 +88,11 @@ public class MyListActivity extends AppCompatActivity {
     void locateViews(){
         media_list_recycler = (RecyclerView) findViewById(R.id.media_list_recycler);
         add_media_item_button = (FloatingActionButton) findViewById(R.id.add_media_item_button);
+        layout = findViewById(R.id.myListActivity);
     }
 
     void bindData(){
+        themeHelper.themeBackground(layout);
         add_media_item_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +145,24 @@ public class MyListActivity extends AppCompatActivity {
 
         storageUtil.saveMediaData(mediaItems);
         updateMediaItems(storageUtil.getMediaDataList());
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_my_list, menu);
+        return true;
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                //Go to a settings activity
+                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+        }
+        return true;
 
     }
 }

@@ -19,6 +19,7 @@ public class MediaItem {
     public String description;
     public String url;
 
+
     public MediaItemType type = MediaItemType.Generic;
 
     public MediaItem(JSONObject jsonObject){

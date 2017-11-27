@@ -1,16 +1,20 @@
 package co.miniforge.corey.mediatracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import co.miniforge.corey.mediatracker.model.MediaItem;
+import co.miniforge.corey.mediatracker.ui_helpers.ThemeHelper;
 
 import static co.miniforge.corey.mediatracker.MyListActivity.mediaExtra;
 
@@ -30,6 +34,12 @@ public class MediaItemDetailActivity extends AppCompatActivity {
     EditText description;
     EditText url;
     Button saveButton;
+    View layout;
+    TextView titlePrompt;
+    TextView descriptionPrompt;
+    TextView urlPrompt;
+    TextView header;
+    ThemeHelper themeHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +51,20 @@ public class MediaItemDetailActivity extends AppCompatActivity {
         getButton();
         fillEdits();
         saveButtonListener();
+        getThemeItems();
+        themeHelper = new ThemeHelper(getApplicationContext());
+        themeHelper.themeBackground(layout);
+        TextView[] textViews = {titlePrompt, descriptionPrompt, urlPrompt, header};
+        themeHelper.themeTextView(textViews);
+
+    }
+
+    void getThemeItems() {
+        layout = findViewById(R.id.mediaItemDetailLayout);
+        titlePrompt = (TextView) findViewById(R.id.titlePrompt);
+        descriptionPrompt = (TextView) findViewById(R.id.descriptionPrompt);
+        urlPrompt = (TextView) findViewById(R.id.urlPrompt);
+        header = (TextView) findViewById(R.id.header);
 
     }
 
