@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import co.miniforge.corey.mediatracker.media_recycler.MediaRecyclerAdapter;
+import co.miniforge.corey.mediatracker.media_store.MediaItemSortHelper;
 import co.miniforge.corey.mediatracker.media_store.MediaStorageUtil;
 import co.miniforge.corey.mediatracker.model.MediaItem;
 import co.miniforge.corey.mediatracker.ui_helpers.ThemeHelper;
@@ -161,6 +162,17 @@ public class MyListActivity extends AppCompatActivity {
                 //Go to a settings activity
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(intent);
+            case R.id.action_sortbyname:
+                MediaItemSortHelper.sortByName(mediaItems);
+                storageUtil.saveMediaData(mediaItems);
+                updateMediaItems(mediaItems);
+                break;
+            case R.id.action_sortbytype:
+                MediaItemSortHelper.sortByType(mediaItems);
+                storageUtil.saveMediaData(mediaItems);
+                updateMediaItems(mediaItems);
+                break;
+
         }
         return true;
 
